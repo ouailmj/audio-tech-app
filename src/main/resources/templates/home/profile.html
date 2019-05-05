@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Home Page</title>
+    <link rel="stylesheet"  th:href="@{/asset/libs/magnific-popup/dist/magnific-popup.css}"/>
+    <link rel="stylesheet" th:href="@{/dist/css/style.min.css}"/>
+
+    <link th:href="@{/font/css/all.css}" rel="stylesheet">
+
+    <style>
+        .sidebar-nav ul .sidebar-item.selected>.sidebar-link {
+            background: #1F262D;
+            opacity: .4;
+            transition:all 0.3s ease
+        }
+        .sidebar-nav ul .sidebar-item.selected>.sidebar-link:hover {
+            opacity: 1;
+            transition:all 0.3s ease
+        }
+    </style>
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+
+<div id="main-wrapper">
+
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <b class="logo-icon p-l-10">
+                        <img style="height: 30px;width: 40px" th:src="@{/icone/shopping-cart.png}" alt="homepage" class="light-logo">
+
+                    </b>
+                    <span class="logo-text">
+                        <img style="width: 135px; height: 30px; margin-left: 20px;" th:src="@{/icone/shop-logo.png}" alt="homepage" class="light-logo">
+                    </span>
+                </a>
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="fas fa-bars font-24"></i></a></li>
+                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search position-absolute">
+                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" style="position: relative;top: 5px;" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 fas fa-bell"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10" style="margin-left: 10px;">
+                                                <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
+                                                <div class="m-l-10" style="padding-left: 10px;padding-top: 5px;">
+                                                    <h5 class="m-b-0">Notification</h5>
+                                                    <span class="mail-desc"> n'est pas en marche </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img th:src="@{/asset/images/users/1.jpg}" alt="user" class="rounded-circle" width="31"></a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="p-t-30">
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="" aria-expanded="false"><i class="fas fa-columns"></i><span class="hide-menu"> Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="" aria-expanded="false"><i class="fas fa-cart-arrow-down"></i><span class="hide-menu"> Panier</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-edit"></i><span class="hide-menu"> Authentification </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Profile </span></a></li>
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-user-cog"></i><span class="hide-menu"> Edit Profile </span></a></li>
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-key"></i><span class="hide-menu"> Edit Password </span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Profile :</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="card col-sm-11">
+                <div class="card col-sm-12">
+                <div class="tab-content tabcontent-border">
+                    <div class="tab-pane active" id="profile" role="tabpanel">
+                        <div class="p-20">
+                            <form class="form" action="#" th:action="@{/profile/submit}" th:object="${client}" method="post">
+                                <div class="tab-pane" id="settings">
+                                    <div class="p-2"><img  style="max-width: 30%;padding-bottom: 20px" th:src="@{/icone/noprofile.jpg}" alt="user" class="img-fluid mx-auto d-block rounded-circle">
+                                        <div class="col-md-4" style="margin-left:33.33%">
+                                            <div class="custom-file">
+                                                <input onchange="onFileSelected" type="file" class="custom-file-input" id="validatedCustomFile">
+                                                <label class="custom-file-label" for="validatedCustomFile">Changer profile...</label>
+                                                <div class="invalid-feedback">Cette image est invalide</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row mb-3">
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="first_name">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-user"></i> name :</h4></label>
+                                            <input required type="text" th:value="${client.nom}" th:field="${client.nom}" class="form-control" id="first_name" placeholder="first name" title="enter your first name if any.">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="email">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-envelope"></i> Email :</h4></label>
+                                            <input  required  readonly type="email" th:value="${client.email}" class="form-control" id="email" placeholder="you@email.com" title="enter your email.">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="Address">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-envelope"></i> Addresse :</h4></label>
+                                            <input  required   type="text" th:field="${client.address.rue}" th:value="${client.address.rue}" class="form-control" id="Address" placeholder="Addresse ..." title="enter your Address.">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="ville">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-envelope"></i> Ville :</h4></label>
+                                            <input  required   type="text" class="form-control" th:field="${client.address.ville}" th:value="${client.address.ville}" id="ville" placeholder="Ville ..." title="enter your Ville.">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="pays">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-envelope"></i> Pays :</h4></label>
+                                            <input  required   type="text" class="form-control" id="pays" th:field="${client.address.pays}" th:value="${client.address.pays}" placeholder="Pays" title="enter your Pays.">
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label for="zip">
+                                                <h4><i style="margin-right: 3px;" class="fas fa-envelope"></i> Zip Code :</h4></label>
+                                            <input  required   type="text" class="form-control" id="zip" th:field="${client.address.zipCode}" th:value="${client.address.zipCode}" placeholder="zip code" title="enter your zip code .">
+                                        </div>
+                                        <div style="width: 100%;" id="accordian-4">
+                                            <div class="card m-t-30">
+                                                <a class="card-header link border-top" data-toggle="collapse" data-parent="#accordian-4" href="#Toggle-2" aria-expanded="false" aria-controls="Toggle-2">
+                                                    <i class="seticon fa fa-arrow-right" aria-hidden="true"></i>
+                                                    <span>Option d'affichage du profil public</span>
+                                                </a>
+                                                <div id="Toggle-2" class="multi-collapse collapse" style="">
+                                                    <div class="card-body widget-content">
+                                                        <div class="form-group row">
+                                                            <label class="col-md-9">Je souhaite que les dons réalisés et obtenus soient visibles dans mon profil public.</label>
+                                                            <div class="col-md-3">
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" checked class="custom-control-input" id="customControlValidation1" name="radio-stacked" >
+                                                                    <label class="custom-control-label" for="customControlValidation1">Oui</label>
+                                                                </div>
+                                                                <div class="custom-control custom-radio">
+                                                                    <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked">
+                                                                    <label class="custom-control-label" for="customControlValidation2">Non</label>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="border-top" style="width:100%">
+                                            <div class="card-body" style="float:right;padding-bottom:0px">
+                                                <button type="submit" class="btn btn-success btn-lg">Valider</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            All Rights Reserved by OuailMjahed.
+        </footer>
+    </div>
+    <style>
+        .row{
+            margin-top: 10px;
+        }
+    </style>
+</div>
+
+<script th:src="@{/asset/libs/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{/asset/libs/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{/asset/libs/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{/asset/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js}"></script>
+<script th:src="@{/asset/extra-libs/sparkline/sparkline.js}"></script>
+<script th:src="@{/dist/js/waves.js}"></script>
+<script th:src="@{/dist/js/sidebarmenu.js}"></script>
+<script th:src="@{/dist/js/custom.min.js}"></script>
+<script th:src="@{/asset/libs/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/asset/libs/magnific-popup/meg.init.js}"></script>
+</body>
+
+
+</html>

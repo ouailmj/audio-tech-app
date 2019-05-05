@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Panier Page</title>
+    <link rel="stylesheet"  th:href="@{asset/libs/magnific-popup/dist/magnific-popup.css}"/>
+    <link rel="stylesheet" th:href="@{dist/css/style.min.css}"/>
+
+    <link th:href="@{font/css/all.css}" rel="stylesheet">
+
+    <style>
+        .sidebar-nav ul .sidebar-item.selected>.sidebar-link {
+            background: #1F262D;
+            opacity: .4;
+            transition:all 0.3s ease
+        }
+        .sidebar-nav ul .sidebar-item.selected>.sidebar-link:hover {
+            opacity: 1;
+            transition:all 0.3s ease
+        }
+    </style>
+</head>
+
+<body>
+<div class="preloader">
+    <div class="lds-ripple">
+        <div class="lds-pos"></div>
+        <div class="lds-pos"></div>
+    </div>
+</div>
+
+<div id="main-wrapper">
+
+    <header class="topbar" data-navbarbg="skin5">
+        <nav class="navbar top-navbar navbar-expand-md navbar-dark">
+            <div class="navbar-header" data-logobg="skin5">
+                <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)"><i class="ti-menu ti-close"></i></a>
+                <a class="navbar-brand" href="index.html">
+                    <b class="logo-icon p-l-10">
+                        <img style="height: 30px;width: 40px" th:src="@{icone/shopping-cart.png}" alt="homepage" class="light-logo">
+
+                    </b>
+                    <span class="logo-text">
+                        <img style="width: 135px; height: 30px; margin-left: 20px;" th:src="@{icone/shop-logo.png}" alt="homepage" class="light-logo">
+                    </span>
+                </a>
+                <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i class="ti-more"></i></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin5">
+                <ul class="navbar-nav float-left mr-auto">
+                    <li class="nav-item d-none d-md-block"><a class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)" data-sidebartype="mini-sidebar"><i class="fas fa-bars font-24"></i></a></li>
+                    <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark" href="javascript:void(0)"><i class="ti-search"></i></a>
+                        <form class="app-search position-absolute">
+                            <input type="text" class="form-control" placeholder="Search &amp; enter"> <a class="srh-btn"><i class="ti-close"></i></a>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="navbar-nav float-right">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark" style="position: relative;top: 5px;" href="" id="2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="font-24 fas fa-bell"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right mailbox animated bounceInDown" aria-labelledby="2">
+                            <ul class="list-style-none">
+                                <li>
+                                    <div class="">
+                                        <a href="javascript:void(0)" class="link border-top">
+                                            <div class="d-flex no-block align-items-center p-10" style="margin-left: 10px;">
+                                                <span class="btn btn-success btn-circle"><i class="ti-calendar"></i></span>
+                                                <div class="m-l-10" style="padding-left: 10px;padding-top: 5px;">
+                                                    <h5 class="m-b-0">Notification</h5>
+                                                    <span class="mail-desc"> n'est pas en marche </span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark pro-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img th:src="@{asset/images/users/1.jpg}" alt="user" class="rounded-circle" width="31"></a>
+                        <div class="dropdown-menu dropdown-menu-right user-dd animated">
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-user m-r-5 m-l-5"></i> My Profile</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-wallet m-r-5 m-l-5"></i> My Balance</a>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-email m-r-5 m-l-5"></i> Inbox</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="ti-settings m-r-5 m-l-5"></i> Account Setting</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:void(0)"><i class="fa fa-power-off m-r-5 m-l-5"></i> Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar" data-sidebarbg="skin5">
+        <div class="scroll-sidebar">
+            <nav class="sidebar-nav">
+                <ul id="sidebarnav" class="p-t-30">
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="" aria-expanded="false"><i class="fas fa-columns"></i><span class="hide-menu"> Dashboard</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="" aria-expanded="false"><i class="fas fa-cart-arrow-down"></i><span class="hide-menu"> Panier</span></a></li>
+                    <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fas fa-user-edit"></i><span class="hide-menu"> Authentification </span></a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-user"></i><span class="hide-menu"> Profile </span></a></li>
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-user-cog"></i><span class="hide-menu"> Edit Profile </span></a></li>
+                            <li class="sidebar-item"><a href="" class="sidebar-link"><i class="fas fa-key"></i><span class="hide-menu"> Edit Password </span></a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <div class="page-wrapper">
+        <div class="page-breadcrumb">
+            <div class="row">
+                <div class="col-12 d-flex no-block align-items-center">
+                    <h4 class="page-title">Panier :</h4>
+                    <div class="ml-auto text-right">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row el-element-overlay">
+                <div th:if="${produits.size()} > 0" th:each="produit : ${produits}" class="col-lg-3 col-md-6">
+                    <div class="card">
+                        <div class="el-card-item" style="padding: 0px;">
+                            <div class="el-card-avatar el-overlay-1"> <img th:if="${produit.url} == null" style="max-height: 230px" th:src="@{asset/images/big/img4.jpg}" alt="user" />
+                                <img style="max-height: 230px" th:if="${produit.url} != null" th:attr="src=${produit.getUrl()}" alt="user" />
+                                <div class="el-overlay">
+                                    <ul class="list-style-none el-info">
+                                        <li class="el-item"><a class="btn default btn-outline image-popup-vertical-fit el-link" th:attr="href=${produit.getUrl()}"><i class="fas fa-search-plus"></i></a></li>
+                                        <li class="el-item"><a class="btn default btn-outline el-link" th:href="@{${'/home/detail/' + produit.id}}"><i class="fas fa-link"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="el-card-content" style="padding: 0px;">
+                                <div class="container">
+                                    <h5 class="m-b-0" th:text="${produit.nom}">Titre</h5>
+                                    <span style="font-size: 12px" th:text="${produit.description}" class="text-muted text-right">description</span>
+                                    <div class="row" style="padding: 0px;">
+                                        <div class="col-12 m-t-15" style="padding: 0;margin-top:0">
+                                            <div class="bg-danger p-10 text-white text-center">
+                                                <h6 th:text="${'prix : ' + produit.prix + ' $'}" style="padding: 14px;margin-bottom: 0px;margin-top: 10px;" class="m-b-5 m-t-5"><i class="fas fa-location-arrow m-b-5 font-12"></i> Prix : &nbsp; 100 $</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div th:if="${produits.size()} == 0" class="row el-element-overlay">
+                    <button style="margin:auto" type="button" class="btn btn-secondary center-block btn-lg" data-container="body" data-toggle="popover" data-placement="middle">
+                        Pas d'annonces pour le momment ... !
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-body printableArea">
+                        <h3><b>Bilan :</b> <span class="pull-right">#5669626</span></h3>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="pull-left">
+                                    <address th:if="${client.getAddress()} != null">
+                                        <h3> &nbsp;<b class="text-danger">Panier :</b></h3>
+                                        <p class="text-muted m-l-5" th:text="${client.getAddress().getRue() + ' ,'}"></p>
+                                        <p class="text-muted m-l-5" th:text="${'Pays : ' + client.getAddress().getPays() + ' ,'}"></p>
+                                        <p class="text-muted m-l-5" th:text="${'Ville : ' +  client.getAddress().getVille() + ' ,'}"></p>
+                                        <p class="text-muted m-l-5" th:text="${'Code Postal : ' +  client.getAddress().getZipCode() + ' ,'}"></p>
+                                    </address>
+                                    <address th:if="${client.getAddress()} == null">
+                                        <h3> &nbsp;<b class="text-danger">Panier :</b></h3>
+                                        <a th:href="@{/ajouter_address}"></a>
+                                    </address>
+                                </div>
+                                <div class="pull-right text-right">
+                                    <address>
+                                        <p class="m-t-30"><b>Panier Date : </b> <i class="fa fa-calendar"></i> &nbsp; <span th:text="${panier.getDate()}"></span> </p>
+                                    </address>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="table-responsive m-t-40" style="clear: both;">
+                                    <table th:with="inc = 0" class="table table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th class="text-center">#</th>
+                                            <th>Nom</th>
+                                            <th>Description</th>
+                                            <th class="text-right">Quantity</th>
+                                            <th class="text-right">Unit Cost</th>
+                                            <th class="text-right">Total</th>
+                                            <th class="text-right">+ Quantité</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:with="inc = ${inc + 1}" th:each="produit : ${produitsPanier}">
+                                            <td class="text-center" th:text="${inc}">1</td>
+                                            <td th:text="${produit.getProduit().getNom()}"></td>
+                                            <td th:text="${produit.getProduit().description}"></td>
+                                            <td th:id="'id' + ${produit.getProduit().getId()}" class="text-right" th:text="${produit.getQte()}"></td>
+                                            <td th:id="'prix' + ${produit.getProduit().getId()}" class="text-right" th:text="${produit.getProduit().getPrix()}"></td>
+                                            <td class="text-right" th:text="${produit.getProduit().getPrix()*produit.getQte()}"> $48 </td>
+                                            <td class="text-right">
+                                                <a th:onclick="'myFunction(' + ${produit.getProduit().getId()} + ')'" data-toggle="tooltip" data-placement="top" title="" data-original-title="Update">
+                                                    <i class="fas fa-plus"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="pull-right m-t-30 text-right">
+                                    <h3><b>Total :</b> <span id="total" th:text="${' ' + total}"></span></h3>
+                                </div>
+                                <div class="clearfix"></div>
+                                <hr>
+                                <div class="text-right">
+                                    <form method="post" th:action="@{/panier}">
+                                        <input type="hidden" id="hid" name="total" th:value="${total}" />
+                                        <button class="btn btn-danger" type="submit"> Proceed to payment </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer text-center">
+            All Rights Reserved by OuailMjahed.
+        </footer>
+    </div>
+</div>
+<script>
+    function myFunction(id) {
+        var qte = parseInt(document.getElementById('id' + id).innerHTML, 10);
+        var prix = parseFloat(document.getElementById('prix' + id).innerHTML);
+        document.getElementById('id' + id).innerHTML = qte + 1 ;
+        document.getElementById('total').innerHTML = parseFloat(document.getElementById('total').innerHTML) + prix ;
+        document.getElementById('hid').value = parseFloat(document.getElementById('total').innerHTML) + prix
+    }
+</script>
+<script th:src="@{asset/libs/jquery/dist/jquery.min.js}"></script>
+<script th:src="@{asset/libs/popper.js/dist/umd/popper.min.js}"></script>
+<script th:src="@{asset/libs/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script th:src="@{asset/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js}"></script>
+<script th:src="@{asset/extra-libs/sparkline/sparkline.js}"></script>
+<script th:src="@{dist/js/waves.js}"></script>
+<script th:src="@{dist/js/sidebarmenu.js}"></script>
+<script th:src="@{dist/js/custom.min.js}"></script>
+<script th:src="@{asset/libs/magnific-popup/dist/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{asset/libs/magnific-popup/meg.init.js}"></script>
+</body>
+
+
+</html>
