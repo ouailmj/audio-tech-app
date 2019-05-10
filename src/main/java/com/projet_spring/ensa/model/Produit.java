@@ -19,8 +19,6 @@ public class Produit {
     @Size(max = 100)
     private String nom;
 
-    @Lob
-    @Column(name="url", length=1024)
     private String url;
 
     @NotNull

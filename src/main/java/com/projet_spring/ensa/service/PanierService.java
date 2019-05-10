@@ -32,18 +32,4 @@ public class PanierService {
         return panierRepository.findAll();
     }
 
-    public void save(long id , Produit produit){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUserName = authentication.getName();
-        Client client = clientService.findClientByEmail(currentUserName);
-        PanierItem panierItem = new PanierItem();
-        panierItem.setPanier(client.getPanier());
-        panierItem.setProduit(produitService.get(id));
-        panierItem.setQte(1);
-        client.getPanier().getProduitpanier().add(panierItem);
-        produitRepository.save(produit);
-        panierRepository.save(client.getPanier());
-    }
-
-
 }

@@ -3,6 +3,7 @@ package com.projet_spring.ensa.controller;
 import com.projet_spring.ensa.model.*;
 import com.projet_spring.ensa.repository.ClientRepository;
 import com.projet_spring.ensa.repository.PanierRepository;
+import com.projet_spring.ensa.repository.ProduitRepository;
 import com.projet_spring.ensa.service.ClientService;
 import com.projet_spring.ensa.service.CommandService;
 import com.projet_spring.ensa.service.PanierService;
@@ -42,7 +43,13 @@ public class ClientController {
     CommandService commandService;
 
     @Autowired
+    private PanierRepository panierRepository;
+
+    @Autowired
     private ProduitService produitService;
+
+    @Autowired
+    private ProduitRepository produitRepository;
 
     @Autowired
     private PanierService panierService;
@@ -105,14 +112,30 @@ public class ClientController {
     }
 
     @RequestMapping(value = "/add/panier/{id}", method = GET)
-    public ModelAndView add(@PathVariable("id") long id) {
-        ModelAndView model = new ModelAndView();
-        Produit produit;
-        produit = produitService.get((long) id);
-        panierService.save(id,produit);
-        model.addObject("produit",produit);
-        model.setViewName("home/detail");
-        return model;
+    public String add(@PathVariable("id") long id) {
+
+        Produit produit = produitService.get((long) id);
+        System.out.println(produit.getNom());
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUserName = authentication.getName();
+        Client client = clientService.findClientByEmail(currentUserName);
+        Panier panier = panierRepository.findById(client.getPanier().getId()).get();
+        PanierItem panierItem = new PanierItem();
+        panierItem.setPanier(panier);
+        panierItem.setProduit(produit);
+        panierItem.setQte(1);
+        System.out.println(panier.getId());
+        try{
+            panier.getProduitpanier().add(panierItem);
+
+            produitRepository.save(produit);
+            panierRepository.save(panier);
+
+        }catch (Exception e){
+
+        }
+
+        return "redirect:/home/detail/" + id;
     }
 
 
