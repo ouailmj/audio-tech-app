@@ -54,7 +54,7 @@ public class ClientController {
     @Autowired
     private PanierService panierService;
 
-    @RequestMapping(value = {"/login"},method = GET)
+    @RequestMapping(value = {"/","/login"},method = GET)
     public ModelAndView login(){
         ModelAndView model = new ModelAndView();
         model.setViewName("auth/login");

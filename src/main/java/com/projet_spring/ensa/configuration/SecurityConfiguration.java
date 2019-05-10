@@ -40,9 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
 
         http.authorizeRequests()
-            .antMatchers("/").permitAll()
         .antMatchers("/**/fonts/**").permitAll()
-        .antMatchers( "/",
+        .antMatchers(
                         "/assets/**",
                         "/build/**",
                         "/asset/**",
@@ -70,9 +69,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .tokenValiditySeconds(60*60)
                 .and().exceptionHandling().accessDeniedPage("/access_denied");
         http.authorizeRequests()
-                .antMatchers("/").permitAll()
                 .antMatchers("/**/fonts/**").permitAll()
-                .antMatchers( "/",
+                .antMatchers(
                         "/assets/**",
                         "/build/**",
                         "/asset/**",

@@ -53,6 +53,21 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
+    public void saveAdmin(Client client) {
+        client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
+        client.setActive(1);
+        Role userRole = roleRespository.findByRole("ADMIN");
+        Role userRole2 = roleRespository.findByRole("USER");
+        client.setRoles(new HashSet<Role>(Arrays.asList(userRole,userRole2)));
+        client.setAdmin(false);
+        Panier panier = new Panier();
+        panier.setDate(new Date());
+        client.setPanier(panier);
+        panierRepository.save(panier);
+        clientRepository.save(client);
+    }
+
+    @Override
     public List<Client> listAll() {
         return clientRepository.findAll();
     }
